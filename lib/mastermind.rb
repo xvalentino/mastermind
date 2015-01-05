@@ -15,7 +15,13 @@ class Mastermind
   end
 
   def color_check
-    colors_correct = @guess.inject(0) {|total, color| total + @secret.count(color)}
+    secret_check = @secret
+    colors_correct = @guess.inject(0) do
+      |total, color| if secret_check.include?(color)
+        secret_check.delete(color)
+        total + 1
+      end
+    end
     "#{colors_correct} correct colors"
   end
 

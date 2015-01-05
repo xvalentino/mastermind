@@ -21,10 +21,11 @@ class MastermindTest < Minitest::Test
 
   def test_color_checker
     mm = Mastermind.new
-    mm.guess("RBYG")
-    mm.secret = "GYBR"
+    mm.guess("RRRR")
+    mm.secret = "GBYR"
     mm.color_check
-    assert_equal "4 correct colors", mm.color_check
+    assert_equal "1 correct colors", mm.color_check
+
 
   end
 
