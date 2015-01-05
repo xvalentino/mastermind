@@ -7,9 +7,34 @@ class MastermindTest < Minitest::Test
     assert MastermindTest
   end
 
-  def test_it_wins
+  def setup
     mm = Mastermind.new
-    result = mm.execute("BBGB")
-    assert result.downcase.include?("win")
+  end
+
+  def test_random_secret
+    mm = Mastermind.new
+    mm.gen_secret
+
+  end
+
+
+
+  def test_color_checker
+    mm = Mastermind.new
+    mm.guess("RBYG")
+    mm.secret = "GYBR"
+    mm.color_check
+    assert_equal "4 correct colors", mm.color_check
+
+  end
+
+  def test_placement_checker
+    skip
+  end
+
+
+  def test_it_wins
+    skip
+
   end
 end
