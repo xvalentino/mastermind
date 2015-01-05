@@ -21,12 +21,17 @@ class MastermindTest < Minitest::Test
 
   def test_color_checker
     mm = Mastermind.new
-    mm.guess("RRRR")
-    mm.secret = "GBYR"
+    mm.guess("GGYB")
+    mm.secret = ["G", "G", "G", "G"]
     mm.color_check
-    assert_equal "1 correct colors", mm.color_check
+    assert_equal 2, mm.color_check
+  end
 
-
+  def test_placement
+    mm = Mastermind.new
+    mm.guess("RGYB")
+    mm.secret = ["Y", "G", "G", "R"]
+    assert_equal 1, mm.place_check
   end
 
   def test_placement_checker

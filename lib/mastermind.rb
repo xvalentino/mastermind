@@ -15,14 +15,21 @@ class Mastermind
   end
 
   def color_check
-    secret_check = @secret
-    colors_correct = @guess.inject(0) do
-      |total, color| if secret_check.include?(color)
-        secret_check.delete(color)
-        total + 1
+    secret_check = @secret.dup
+    @guess.each do |color| #deleting element unless nil
+        secret_check.delete_at(secret_check.index(color) || secret_check.length)
+    end
+    @secret.length - secret_check.length #subtracting remaining number elements for correct colors
+  end
+
+  def place_check
+    correct = 0
+    [0,1,2,3].each do |num|
+      if @guess[num] == @secret[num]
+        correct =+1
       end
     end
-    "#{colors_correct} correct colors"
+    correct
   end
 
 end
