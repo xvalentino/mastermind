@@ -1,29 +1,49 @@
+require 'colorize'
+
 class Printer
 
   #Menu
   def welcome
-    "Hello! Welcome to Mastermind!"
+    "\n"*10 +
+    "
+    ##     ##    ###     ######  ######## ######## ########  ##     ## #### ##    ## ########
+    ###   ###   ## ##   ##    ##    ##    ##       ##     ## ###   ###  ##  ###   ## ##     ##
+    #### ####  ##   ##  ##          ##    ##       ##     ## #### ####  ##  ####  ## ##     ##
+    ## ### ## ##     ##  ######     ##    ######   ########  ## ### ##  ##  ## ## ## ##     ##
+    ##     ## #########       ##    ##    ##       ##   ##   ##     ##  ##  ##  #### ##     ##
+    ##     ## ##     ## ##    ##    ##    ##       ##    ##  ##     ##  ##  ##   ### ##     ##
+    ##     ## ##     ##  ######     ##    ######## ##     ## ##     ## #### ##    ## ########
+
+
+
+    ".colorize(:light_cyan ) + "\n"*9
   end
 
   def menu
-    "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    menu = "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"+
+    "\n"
+    menu
+  end
+
+  def tenblank
+    "\n"*10
   end
 
   def instructions
     "A random sequence of the colors Red, Blue, Green, and Yellow will
 be generated. Your goal is to guess what that sequence is! To indicate
-    your guess, type in the first character of each color. For example: 'Red,
-    Blue, Green, Yellow' would be the sequence of letters 'RBGY.' After each
-    guess you will get a hint as to how many colors (or elements) you guess
-    correctly, and how many are in the correct position. Pressing 'q' at any
-    time will bring you back to the main menu, and pressing 'q' once more
-    will exit the game. \n"
+your guess, type in the first character of each color. For example: 'Red,
+Blue, Green, Yellow' would be the sequence of letters 'RBGY.' After each
+guess you will get a hint as to how many colors (or elements) you guess
+correctly, and how many are in the correct position. Pressing 'q' at any
+time will bring you back to the main menu, and pressing 'q' once more
+will exit the game. \n"
   end
 
   #play game
   def start_game
-    "I have generated a beginner sequence with four elements made up of: (r)ed,
-    (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
+    "\n"*35 + "I have generated a beginner sequence with four elements made up of: " + "(r)ed,".colorize(:light_red) + "
+    " + "(g)reen,".colorize(:light_green) + " "+"(b)lue,".colorize(:light_blue) + " and " + "(y)ellow.".colorize(:light_yellow) + " Use (q)uit at any time to end the game.
     What's your guess?"
   end
 
@@ -41,6 +61,23 @@ be generated. Your goal is to guess what that sequence is! To indicate
 
   def invalid_menu
     "I'm sorry, please enter a valid choice."
+  end
+
+  def colorify(i)
+    colored = []
+    colored = i.each do |letter|
+      case (letter)
+      when "R"
+        letter = letter.colorize(:light_red)
+      when "G"
+        letter = letter.colorize(:light_green)
+      when "Y"
+        letter = letter.colorize(:light_yellow)
+      when "B"
+        letter = letter.colorize(:light_blue)
+      end
+    end
+      return colored.join
   end
 
 end

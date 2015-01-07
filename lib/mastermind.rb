@@ -5,14 +5,19 @@ class Mastermind
   def valid_input
     i = :ask
     until i != :ask
-      input = gets.chomp
-      if input.length == @secret_length
+      @input = gets.chomp.upcase
+      if @input[0] == 'Q'
         i = :go
-        return input
-      elsif input.length < @secret_length
+        return @input
+      elsif @input.length < @secret_length
         puts "Your guess was not long enough, please make a #{@secret_length} character guess."
-      elsif input.length > @secret_length
+      elsif @input.length > @secret_length
         puts "Your guess was too long, please make a #{@secret_length} character guess."
+      elsif @input.match(/[^RGYB]/)
+        puts "Your guess contains characters that are not a possible element, please guess again NERD"
+      elsif true || input[0] == 'q'
+        i = :go
+        return @input
       end
     end
   end
@@ -32,8 +37,8 @@ class Mastermind
     @secret
   end
 
-  def guess(guess)
-    @guess = guess.upcase.split("")
+  def guess
+    @guess = @input.split("")
   end
 
   def color_check
@@ -47,12 +52,13 @@ class Mastermind
 
   def place_check
     correct = 0
-    [0..@secret_length].each do |num|
+    (0..@secret_length-1).to_a.each do |num|
       if @guess[num] == @secret[num]
         correct += 1
       end
     end
-    correct
+    return correct
   end
+  
 
 end
