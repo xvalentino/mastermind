@@ -1,12 +1,32 @@
 class Mastermind
-  attr_accessor :secret
-  attr_reader :guess
+  attr_accessor :secret  # => nil
+  attr_reader :guess     # => nil
+
+  def valid_input
+    i = :ask
+    until i != :ask
+      input = gets.chomp
+      if input.length == @secret_length
+        i = :go
+        return input
+      elsif input.length < @secret_length
+        puts "Your guess was not long enough, please make a #{@secret_length} character guess."
+      elsif input.length > @secret_length
+        puts "Your guess was too long, please make a #{@secret_length} character guess."
+      end
+    end
+  end
+
+  def secret_length(num=4)
+    @secret_length = num
+  end
 
 
 
   def gen_secret
+    self.secret_length
     @secret = []
-    4.times do
+    @secret_length.times do
     @secret << ["R", "B", "Y", "G"].sample
     end
     @secret
@@ -27,7 +47,7 @@ class Mastermind
 
   def place_check
     correct = 0
-    [0,1,2,3].each do |num|
+    [0..@secret_length].each do |num|
       if @guess[num] == @secret[num]
         correct += 1
       end

@@ -16,8 +16,7 @@ class MastermindTest < Minitest::Test
     mm.gen_secret
 
   end
-
-
+  
 
   def test_color_checker
     mm = Mastermind.new

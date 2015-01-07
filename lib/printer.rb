@@ -39,4 +39,8 @@ be generated. Your goal is to guess what that sequence is! To indicate
     "Goodbye!"
   end
 
+  def invalid_menu
+    "I'm sorry, please enter a valid choice."
+  end
+
 end

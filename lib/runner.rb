@@ -28,7 +28,7 @@ end
 
 #PLAY GAME
 while signal == :play
-  input = gets.chomp
+  input = game.valid_input
   game.guess(input)
   color = game.color_check
   place = game.place_check

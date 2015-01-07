@@ -6,14 +6,20 @@ class Menu
 
   def execute(input)
     printer = Printer.new
-    case (input)
+    case (input[0]) 
     when 'q'
       return [printer.quit, :quit]
     when 'i'
       return [printer.instructions, :menu]
     when 'p'
       return [printer.start_game, :start]
+    else
+      return [printer.invalid_menu, :menu]
     end
+  end
+
+  def valid_input
+
   end
 
 
