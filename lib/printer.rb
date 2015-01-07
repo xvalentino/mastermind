@@ -1,4 +1,5 @@
 require 'colorize'
+require 'pry'
 
 class Printer
 
@@ -46,7 +47,7 @@ will exit the game. \n\n"
 
   #play game
   def start_game
-    "\n"*10 + "I have generated a beginner sequence with four elements made up of: " + "(r)ed,".colorize(:light_red) + "
+    "\n"*9 + "I have generated a beginner sequence with four elements made up of: " + "(r)ed,".colorize(:light_red) + "
     " + "(g)reen,".colorize(:light_green) + " "+"(b)lue,".colorize(:light_blue) + " and " + "(y)ellow.".colorize(:light_yellow) + " Use (q)uit at any time to end the game.
     What's your guess?"
   end
@@ -68,19 +69,20 @@ will exit the game. \n\n"
   end
 
   def colorify(i)
+    color = []
     i.each do |letter|
       case (letter)
       when "R"
-        letter = letter.colorize(:light_red)
+        color << letter.colorize(:light_red)
       when "G"
-        letter = letter.colorize(:light_green)
+        color << letter.colorize(:light_green)
       when "Y"
-        letter = letter.colorize(:light_yellow)
+        color << letter.colorize(:light_yellow)
       when "B"
-        letter = letter.colorize(:light_blue)
+        color << letter.colorize(:light_blue)
       end
     end
-      colored = i[0] + i[1] + i[2] + i[3]
+    color.join
 
   end
 

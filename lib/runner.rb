@@ -2,6 +2,7 @@ require_relative 'mastermind'
 require_relative 'menu'
 require_relative 'printer'
 require 'pry'
+require 'colorize'
 
 instructions = :on
 printer = Printer.new
@@ -51,7 +52,7 @@ while signal == :play
     signal = :menu
   elsif
     colored = printer.colorify(game.guess)
-    message =  printer.tenblank + "'#{colored}' has #{color} of the correct elements with #{place} in the correct positions"
+    message = printer.tenblank + "'#{colored}' has #{color} of the correct elements with #{place} in the correct positions\n\n"
   end
 end
 
