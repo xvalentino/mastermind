@@ -3,40 +3,43 @@ require_relative 'menu'
 require_relative 'printer'
 require 'pry'
 
+instructions = :on
 printer = Printer.new
 menu = Menu.new
 signal = :menu
+message = ""
+
 #Game Running
 while signal != :quit#########################
 #MENU
 while signal == :menu
-  puts printer.welcome
+  puts printer.welcome#MASTERMIND TITLE
   puts printer.menu.colorize(:light_white)
   puts printer.tenblank
-  input = gets.chomp
-  message, signal = menu.execute(input)
-  puts message
+  input = gets.chomp#ASK FOR INPUT
+  message, signal = menu.execute(input)#SET MESSAGE AS WELL AS GAME STATE
 end
 
-if signal == :instructions
-  puts printer.welcome
+#INSTRUCTIONS
+while signal == :instructions
+  puts printer.welcome#MASTERMIND TITLE
   puts printer.menu.colorize(:light_black)
   puts printer.instructions.colorize(:light_white)
-  puts "enter any key to return to the menu"
-  gets
-  signal = :menu
+  input = gets.chomp#ASK FOR INPUT
+  message, signal = menu.execute_instructions(input)#SET MESSAGE AS WELL AS GAME STATE
 end
-
-
 #START GAME
 while signal == :start
   game = Mastermind.new
   secret = game.gen_secret
   signal = :play
+  message = printer.start_game
 end
 
 #PLAY GAME
 while signal == :play
+  puts printer.welcome
+  puts message
   input = game.valid_input
   game.guess
   color = game.color_check
@@ -48,8 +51,7 @@ while signal == :play
     signal = :menu
   elsif
     colored = printer.colorify(game.guess)
-    binding.pry
-    puts "'#{colored}' has #{color} of the correct elements with #{place} in the correct positions"
+    message =  printer.tenblank + "'#{colored}' has #{color} of the correct elements with #{place} in the correct positions"
   end
 end
 

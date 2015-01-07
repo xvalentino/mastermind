@@ -59,6 +59,9 @@ class Mastermind
     end
     return correct
   end
-  
+
+
+
+
 
 end

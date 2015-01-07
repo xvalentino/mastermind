@@ -4,7 +4,7 @@ class Printer
 
   #Menu
   def welcome
-    "\n"*10 +
+    "\n"*20 +
     "
     ##     ##    ###     ######  ######## ######## ########  ##     ## #### ##    ## ########
     ###   ###   ## ##   ##    ##    ##    ##       ##     ## ###   ###  ##  ###   ## ##     ##
@@ -29,6 +29,10 @@ class Printer
     "\n"*10
   end
 
+  def eightblank
+    "\n"*7
+  end
+
   def instructions
     "A random sequence of the colors Red, Blue, Green, and Yellow will
 be generated. Your goal is to guess what that sequence is! To indicate
@@ -37,12 +41,12 @@ Blue, Green, Yellow' would be the sequence of letters 'RBGY.' After each
 guess you will get a hint as to how many colors (or elements) you guess
 correctly, and how many are in the correct position. Pressing 'q' at any
 time will bring you back to the main menu, and pressing 'q' once more
-will exit the game. \n"
+will exit the game. \n\n"
   end
 
   #play game
   def start_game
-    "\n"*35 + "I have generated a beginner sequence with four elements made up of: " + "(r)ed,".colorize(:light_red) + "
+    "\n"*10 + "I have generated a beginner sequence with four elements made up of: " + "(r)ed,".colorize(:light_red) + "
     " + "(g)reen,".colorize(:light_green) + " "+"(b)lue,".colorize(:light_blue) + " and " + "(y)ellow.".colorize(:light_yellow) + " Use (q)uit at any time to end the game.
     What's your guess?"
   end
@@ -64,8 +68,7 @@ will exit the game. \n"
   end
 
   def colorify(i)
-    colored = []
-    colored = i.each do |letter|
+    i.each do |letter|
       case (letter)
       when "R"
         letter = letter.colorize(:light_red)
@@ -77,7 +80,8 @@ will exit the game. \n"
         letter = letter.colorize(:light_blue)
       end
     end
-      return colored.join
+      colored = i[0] + i[1] + i[2] + i[3]
+
   end
 
 end
