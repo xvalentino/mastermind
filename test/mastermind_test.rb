@@ -34,9 +34,6 @@ class MastermindTest < Minitest::Test
     assert_equal 1, mm.place_check
   end
 
-  def test_placement_checker
-    skip
-  end
 
 
   def test_it_wins
