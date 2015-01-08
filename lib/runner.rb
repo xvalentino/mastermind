@@ -1,7 +1,6 @@
 require_relative 'mastermind'
 require_relative 'menu'
 require_relative 'printer'
-require 'pry'
 require 'colorize'
 
 instructions = :on
@@ -9,6 +8,7 @@ printer = Printer.new
 menu = Menu.new
 signal = :menu
 message = ""
+
 
 #Game Running
 while signal != :quit#########################
@@ -32,6 +32,7 @@ end
 #START GAME
 while signal == :start
   game = Mastermind.new
+
   secret = game.gen_secret
   signal = :play
   message = printer.start_game
@@ -60,7 +61,7 @@ end
 
 #WIN GAME
 while signal == :win
-  puts printer.right_answer + "#{secret.join}"
+  puts printer.right_answer + "#{secret.join}" + " in #{game.count} guesses!"
   puts printer.play_again?
   input = gets.chomp
   case (input)
