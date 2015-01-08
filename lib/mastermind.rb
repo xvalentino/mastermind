@@ -15,7 +15,7 @@ class Mastermind
       elsif @input.length > @secret_length
         puts "Your guess was too long, please make a #{@secret_length} character guess."
       elsif @input.match(/[^RGYB]/)
-        puts "Your guess contains characters that are not a possible element, please guess again NERD"
+        puts "Your guess contains characters that are not a possible element, please guess again."
       elsif true
         i = :go
       end

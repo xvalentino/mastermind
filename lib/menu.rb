@@ -27,7 +27,7 @@ class Menu
   def execute_instructions(input)#inputs for instruction
     printer = Printer.new
     case (input)
-    when ('q')
+    when ('q') 
       return [printer.quit, :quit]
     when ('quit')
       return [printer.quit, :quit]
