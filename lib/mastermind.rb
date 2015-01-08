@@ -1,3 +1,4 @@
+require 'pry'
 class Mastermind
   attr_accessor :secret  # => nil
   attr_reader :guess     # => nil
@@ -6,18 +7,14 @@ class Mastermind
     i = :ask
     until i != :ask
       @input = gets.chomp.upcase
-      if @input[0] == 'Q'
-        i = :go
-        return @input
-      elsif @input.length < @secret_length
+      if @input.length < @secret_length
         puts "Your guess was not long enough, please make a #{@secret_length} character guess."
       elsif @input.length > @secret_length
         puts "Your guess was too long, please make a #{@secret_length} character guess."
       elsif @input.match(/[^RGYB]/)
         puts "Your guess contains characters that are not a possible element, please guess again NERD"
-      elsif true || input[0] == 'q'
+      elsif true
         i = :go
-        return @input
       end
     end
   end

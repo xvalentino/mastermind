@@ -48,7 +48,9 @@ while signal == :play
 
   if game.secret.length == place
     signal = :win
-  elsif input == 'Q'
+  elsif input == ('Q')
+    signal = :menu
+  elsif input == ('QUIT')
     signal = :menu
   elsif
     colored = printer.colorify(game.guess)
@@ -65,8 +67,12 @@ while signal == :win
   when 'p'
     signal = :start
     puts printer.start_game
+  when 'play'
+    signal = :start
+    puts printer.start_game
   when 'q' then signal = :menu
+  when 'quit' then signal = :menu
   end
 end
-
+puts message
 end#############################################

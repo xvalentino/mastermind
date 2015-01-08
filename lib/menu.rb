@@ -6,12 +6,18 @@ class Menu
 
   def execute(input)
     printer = Printer.new
-    case (input[0])
-    when 'q'
+    case (input)
+    when ('q')
       return [printer.quit, :quit]
-    when 'i'
+    when ('quit')
+      return [printer.quit, :quit]
+    when ('i')
       return [printer.instructions, :instructions]
-    when 'p'
+    when ('instructions')
+      return [printer.instructions, :instructions]
+    when ('p')
+      return [printer.start_game, :start]
+    when ('play')
       return [printer.start_game, :start]
     else
       return [printer.invalid_menu, :menu]
@@ -20,12 +26,18 @@ class Menu
 
   def execute_instructions(input)
     printer = Printer.new
-    case (input[0])
-    when 'q'
+    case (input)
+    when ('q')
       return [printer.quit, :quit]
-    when 'i'
+    when ('quit')
+      return [printer.quit, :quit]
+    when ('i')
       return [printer.instructions, :menu]
-    when 'p'
+    when ('instructions')
+      return [printer.instructions, :menu]
+    when ('p')
+      return [printer.start_game, :start]
+    when ('play')
       return [printer.start_game, :start]
     else
       return [printer.invalid_menu, :menu]
